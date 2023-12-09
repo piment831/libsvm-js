@@ -1,0 +1,6 @@
+extends: cheminfo
+parser: babel-eslint
+globals:
+  SVM: false
+rules:
+  no-console: 0
