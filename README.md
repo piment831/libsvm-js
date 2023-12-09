@@ -1,5 +1,3 @@
-# [DEMO](https://mljs.github.io/libsvm/)
-
 Port of to port libsvm v3.22 using [emscripten](https://github.com/kripken/emscripten) , for usage in the browser or nodejs. 2 build targets: asm and WebAssembly.
 
 What is libsvm?
@@ -14,11 +12,6 @@ Resources about libsvm:
 
 
 # Usage
-## Install
-```bash
-npm install libsvm-js
-```
-
 ## Load
 The main entry point loads the WebAssembly build and is asynchronous.
 ```js
@@ -27,9 +20,9 @@ require('libsvm-js').then(SVM => {
 });
 ```
 
-There is an alternative entry point if you want to use asm build. This entrypoint is synchronous.
+There is an alternative entry point if you want to use asm build. This entrypoint is asynchronous.
 ```js
-const SVM = require('libsvm-js/asm');
+const SVM = await require('libsvm-js/asm');
 const svm = new SVM(); // ...
 ```
 
@@ -41,8 +34,7 @@ This example illustrates how to use the library to train and use an SVM classifi
 ```js
 
 async function xor() {
-    const SVM = await
-    require('libsvm-js');
+    const SVM = await require('libsvm-js');
     const svm = new SVM({
         kernel: SVM.KERNEL_TYPES.RBF, // The type of kernel I want to use
         type: SVM.SVM_TYPES.C_SVC,    // The type of SVM I want to run
